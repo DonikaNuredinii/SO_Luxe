@@ -39,7 +39,6 @@
         </div>
       </div>
       
-
     <div id="slider-container">
       <div id="slider">
         <div class="slide"><img src="../images/s1.jpg" alt="Slide 1" /></div>

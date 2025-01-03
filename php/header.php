@@ -17,7 +17,7 @@
       <i class="fas fa-bars menu-toggle"></i>
       <ul class="navbar-links">
         <li><a href="home.php">Home</a></li>
-        <li><a href="aboutus.html">About us</a></li>
+        <li><a href="aboutus.php">About us</a></li>
         <li><a href="product.php">Products</a></li>
         <li><a href="contactus.php">Contact us</a></li>
 
