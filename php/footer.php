@@ -29,6 +29,6 @@
         <p>&copy; 2024 S&O LUXE. All Rights Reserved.</p>
       </div>
     </footer>
-    <script src="js/script.js"></script>
+    <script src="../assets/script.js"></script>
   </body>
 </html>
