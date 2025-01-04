@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,15 +23,19 @@
         <li><a href="aboutus.php">About us</a></li>
         <li><a href="product.php">Products</a></li>
         <li><a href="contactus.php">Contact us</a></li>
-
-        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
-          <li><a href="php/dashboard.php">Dashboard</a></li>
-        <?php else: ?>
-         
-          <div class="icons">
-            <i class="fas fa-shopping-cart"></i>
+        <div class="icons">
+          <i class="fas fa-shopping-cart"></i>
+          <?php if (!isset($_SESSION['user_id'])): ?>
             <a href="loginsignup.php"> <i class="fas fa-user"></i>  </a> 
-          </div>
+          <?php endif; ?>
+        </div>
+        <?php if (isset($_SESSION['user_id'])): ?>
+          <?php if ($_SESSION['role'] == 'admin'): ?>
+            <li><a href="dashboardpages/dashboard.php">Dashboard</a></li>
+          <?php endif; ?>
+          <li><a href="logout.php">Logout</a></li>
         <?php endif; ?>
       </ul>
     </nav>
+  </body>
+</html>

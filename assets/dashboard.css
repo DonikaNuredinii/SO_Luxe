@@ -1,0 +1,52 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f9f6f1;
+    color: #5f564d;
+  }
+  .sidebar {
+    height: 100vh;
+    background-color: #7a7467;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+    width: 250px;
+  }
+  .sidebar h3 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+  }
+  .sidebar a:hover {
+    background-color: #b8a88c;
+    border-left: 4px solid #e63946;
+  }
+  .main-content {
+    margin-left: 250px;
+    padding: 40px;
+  }
+  .card-custom {
+    border: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    background-color: #f3ede6;
+  }
+  .card-custom h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  .badge {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+  .table th {
+    background-color: #d6ccc3;
+  }
+  
