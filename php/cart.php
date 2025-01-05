@@ -54,7 +54,7 @@ foreach ($_SESSION['cart'] as &$item) {
 <div class="cart-container">
     <div class="top-Cart">
         <h1>Your cart</h1>
-        <a href="index.php" class="continue-shoppingg">Continue Shopping</a>
+        <a href="product.php" class="continue-shoppingg">Continue Shopping</a>
     </div>
 
     <div class="cart-items-name">
@@ -137,22 +137,10 @@ foreach ($_SESSION['cart'] as &$item) {
                 <a href="cart.php" class="view-cart-button">View Cart</a>
             </div>
             <div class="view-cart-container">
-                <a href="index.php" class="continue-shopping">Continue Shopping</a>
+                <a href="product.php" class="continue-shopping">Continue Shopping</a>
             </div>
         </div>
     </div>
-    <script>
-        setTimeout(() => {
-            closeModal();
-        }, 5000);
-
-        function closeModal() {
-            const modal = document.querySelector('.modal-cart');
-            modal.style.display = 'none';
-
-            fetch('clear_modal.php', { method: 'POST' });
-        }
-    </script>
     <?php unset($_SESSION['cart_modal']); ?>
 <?php endif; ?>
 
