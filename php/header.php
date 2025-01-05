@@ -23,12 +23,23 @@ session_start();
         <li><a href="aboutus.php">About us</a></li>
         <li><a href="product.php">Products</a></li>
         <li><a href="contactus.php">Contact us</a></li>
+        
         <div class="icons">
-          <i class="fas fa-shopping-cart"></i>
+          <a href="cart.php">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+
           <?php if (!isset($_SESSION['user_id'])): ?>
-            <a href="loginsignup.php"> <i class="fas fa-user"></i>  </a> 
+            <a href="loginsignup.php">
+              <i class="fas fa-user"></i>
+            </a>
+          <?php else: ?>
+            <a href="profile.php">
+              <i class="fas fa-user-circle"></i> 
+            </a>
           <?php endif; ?>
         </div>
+
         <?php if (isset($_SESSION['user_id'])): ?>
           <?php if ($_SESSION['role'] == 'admin'): ?>
             <li><a href="dashboardpages/dashboard.php">Dashboard</a></li>
