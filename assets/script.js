@@ -38,16 +38,40 @@ setInterval(() => {
 
 //loginsignup
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.querySelector('.form-box-login');
-    const signupForm = document.querySelector('.form-box-signup');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const showSignup = document.getElementById('showSignup');
+    const showLogin = document.getElementById('showLogin');
 
-    window.toggleForm = function() {
-        if (loginForm && signupForm) {
-            loginForm.classList.toggle('hidden');
-            signupForm.classList.toggle('hidden');
-        } else {
-            console.error('Login or Signup form not found in DOM');
-        }
-    }
+    showSignup.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginForm.classList.add('hidden');
+        signupForm.classList.remove('hidden');
+    });
+
+    showLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        signupForm.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+    });
 });
 
+//funksioni per checkbox
+function autoSubmit() {
+  document.getElementById('filterForm').submit();
+}
+
+  //productdetails
+  function openTab(evt, tabName) {
+    var i, tabContent, tabLinks;
+    tabContent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabContent.length; i++) {
+      tabContent[i].style.display = "none";
+    }
+    tabLinks = document.getElementsByClassName("tab");
+    for (i = 0; i < tabLinks.length; i++) {
+      tabLinks[i].classList.remove("active");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+  }

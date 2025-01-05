@@ -199,7 +199,6 @@ nav {
   padding: 40px 20px;
   text-align: center;
   font-size: 0.9rem;
-  margin-top: 50px;
 }
 
 .footer-container {
@@ -1210,6 +1209,14 @@ img {
   align-items: center;
   height: 100vh;
   width: 100%;
+  background: radial-gradient(
+    circle at 30% 30%, 
+    rgba(245, 239, 230, 0.95) 0%,     
+    rgba(230, 220, 205, 0.9) 35%,    
+    rgba(210, 190, 170, 0.85) 60%,   
+    rgba(170, 140, 110, 0.7) 85%,     
+    rgba(130, 100, 80, 0.6) 100%     
+);
 }
 
 h1 {
@@ -1336,4 +1343,225 @@ h1 {
 
 .terms-link:hover {
   text-decoration: underline;
+}
+
+
+/*product page*/
+.container_p {
+  display: flex;
+  max-width: 1400px;
+  margin: 50px auto;
+  gap: 30px;
+}
+
+.filters {
+  flex: 1;
+  padding: 40px;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.filters h2,
+.filter-group h3 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  color: #5f564d;
+}
+
+.filter-group {
+  margin-bottom: 40px;
+  padding: 20px;
+  border: 1px solid #dcd3c3;
+  border-radius: 8px;
+}
+
+.filter-group label {
+  display: block;
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #7a7467;
+}
+
+.filter-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.products {
+  flex: 3;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.product-card {
+  padding: 30px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  height: 530px;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.product-card h2 {
+  margin: 20px 0 10px;
+  font-size: 1.4rem;
+  color: #5f564d;
+}
+
+.product-card p {
+  color: #7a7467;
+  font-size: 1.2rem;
+}
+
+.product-card button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  border: none;
+  background-color: #b8a88c;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: #a09078;
+}
+
+.product-card:hover {
+  opacity: 1;
+}
+
+
+/*productdetails page*/
+.container_pd {
+  display: flex;
+  max-width: 1100px;
+  width: 100%;
+  margin: 20px auto; 
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.product-section_pd {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+.product-image img {
+  max-width: 400px;
+  height: auto;
+}
+.product-details {
+  flex: 1;
+  padding: 50px;
+}
+.product-details h1 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+  color: #5f564d;
+}
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #7a7467;
+  margin: 20px 0;
+}
+.label_pd {
+  margin: 30px 0 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #5f564d;
+}
+.select-box,
+.quantity-select {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  border: 1px solid #d6ccc3;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  background-color: #f3ede6;
+  color: #5f564d;
+}
+.btn_pd {
+  width: 100%;
+  padding: 18px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.cart-btn {
+  background-color: #8b8378;
+  color: white;
+}
+.buy-btn {
+  background-color: #e63946;
+  color: white;
+}
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #dcd3c3;
+  margin-top: 50px;
+}
+.tab {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #7a7467;
+}
+.tab.active {
+  font-weight: bold;
+  border-bottom: 4px solid #e63946;
+  color: #5f564d;
+}
+.tab-content {
+  padding: 40px;
+  display: none;
+  line-height: 1.9;
+  color: #5f564d;
+}
+.tab-content.active {
+  display: block;
+}
+.attributes-list {
+  list-style: none;
+  padding: 0;
+}
+.attributes-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid #d6ccc3;
+  font-size: 1rem;
 }
