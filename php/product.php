@@ -90,5 +90,23 @@ try {
             <p>No products found matching the selected criteria.</p>
         <?php endif; ?>
     </div>
+    <?php if (isset($_SESSION['cart_modal']) && $_SESSION['cart_modal'] == true): ?>
+    <div class="modal-cart">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Item added to cart</p>
+            <img src="<?php echo $_SESSION['cart_image']; ?>" alt="<?php echo $_SESSION['cart_title']; ?>" class="design-preview-modal">
+            <p>Amount: <?php echo number_format($_SESSION['cart_price'], 2); ?>€</p>
+            <div class="view-cart-container">
+                <a href="cart.php" class="view-cart-button">View Cart</a>
+            </div>
+            <div class="view-cart-container">
+                <a href="index.php" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+    <?php unset($_SESSION['cart_modal']); ?>
+<?php endif; ?>
+
 </div>
 <?php include 'footer.php'; ?>

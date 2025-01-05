@@ -75,3 +75,17 @@ function autoSubmit() {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.classList.add("active");
   }
+
+
+
+function closeModal() {
+    const modal = document.querySelector('.modal-cart');
+    modal.style.display = 'none';
+}
+setTimeout(() => {
+  const modal = document.querySelector('.modal-cart');
+  if (modal) {
+      modal.style.display = 'none';
+  }
+}, 5000);
+
