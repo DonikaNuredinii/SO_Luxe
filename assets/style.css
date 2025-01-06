@@ -975,7 +975,7 @@ img {
 .CUsection {
   width: 100%;
   padding: 20px;
-  background-color: #f9f6f1;
+  /* background-color: #f9f6f1; */
 }
 
 .introCU {
@@ -1874,23 +1874,26 @@ h1 {
   color: #5C4B51;
 }
 
-input, select {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0 16px;
-  border: 1px solid #B8A88C;
-  border-radius: 6px;
-  background-color: #fff;
-  color: #5C4B51;
-  font-size: 0.9rem;
-  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
-  transition: border-color 0.3s ease;
+.checkout-container_ch input, 
+.checkout-container_ch select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 16px;
+    border: 1px solid #B8A88C;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #5C4B51;
+    font-size: 0.9rem;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease;
 }
 
-input:focus, select:focus {
-  border-color: #D6C8A8;
-  outline: none;
+.checkout-container_ch input:focus, 
+.checkout-container_ch select:focus {
+    border-color: #D6C8A8;
+    outline: none;
 }
+
 
 .payment-method_ch {
   display: flex;

@@ -9,6 +9,13 @@
 </head>
 <body>
 
+<?php
+if (isset($_SESSION['error'])) {
+    echo "<script>alert('" . $_SESSION['error'] . "');</script>";
+    unset($_SESSION['error']); 
+}
+?>
+
 <div class="container-auth">
     <div class="form-box form-box-login" id="loginForm">
         <h1>Login</h1>
@@ -34,9 +41,9 @@
                 <input type="text" id="name-signup" name="name" required>
             </div>
             <div class="input-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
             <div class="input-group">
                 <label for="email-signup">Email</label>
                 <input type="email" id="email-signup" name="email" required>
@@ -46,16 +53,15 @@
                 <input type="password" id="password-signup" name="password" required>
             </div>
             <div class="input-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
-                </div>
-                <div class="input-group terms-group">
-                    <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms">
-                        I agree to the <a href="#" class="terms-link">Terms and Conditions</a>
-                    </label>
-                </div>
-                
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <div class="input-group terms-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">
+                    I agree to the <a href="#" class="terms-link">Terms and Conditions</a>
+                </label>
+            </div>
             <button type="submit" class="btn">Sign Up</button>
             <p class="switch">Already have an account? <a href="#" id="showLogin">Login</a></p>
         </form>

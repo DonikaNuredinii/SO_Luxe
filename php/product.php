@@ -4,6 +4,9 @@ include 'db.php';
 
 $selectedBrands = isset($_GET['brand']) ? $_GET['brand'] : [];
 $selectedGenders = isset($_GET['gender']) ? $_GET['gender'] : [];
+$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';  
+
+
 
 $query = "SELECT * FROM products WHERE 1=1";
 $params = [];
@@ -19,6 +22,12 @@ if (!empty($selectedGenders)) {
     $query .= " AND gender IN ($genderPlaceholders)";
     $params = array_merge($params, $selectedGenders);
 }
+
+if (!empty($searchTerm)) {
+    $query .= " AND name LIKE ?";
+    $params[] = '%' . $searchTerm . '%';
+}
+
 
 try {
     $stmt = $pdo->prepare($query);
@@ -101,7 +110,7 @@ try {
                 <a href="cart.php" class="view-cart-button">View Cart</a>
             </div>
             <div class="view-cart-container">
-                <a href="index.php" class="continue-shopping">Continue Shopping</a>
+                <a href="product.php" class="continue-shopping">Continue Shopping</a>
             </div>
         </div>
     </div>

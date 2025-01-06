@@ -1,9 +1,16 @@
 <?php
 include 'header.php';
 include 'db.php';
+
+
+if (empty($_SESSION['cart'])) {
+    header("Location: cart.php");
+    exit();
+}
+
 ?>
 <div class="checkout-container_ch">
-    <form class="checkout-form_ch" onsubmit="return validateForm()">
+    <form class="checkout-form_ch" method="POST" action="process_checkout.php">
         <div class="left-section_ch">
             <div class="contact_ch">
                 <h2 class="h2ch">Contact</h2>
@@ -13,8 +20,9 @@ include 'db.php';
                 <h2 class="h2ch">Delivery</h2>
                 <select name="country" required>
                     <option value="">Select Country</option>
-                    <option value="1">United States</option>
-                    <option value="2">Canada</option>
+                    <option value="1">Kosova</option>
+                    <option value="2">Albania</option>
+                    <option value="3">Macedonia</option>
                 </select>
                 <input type="text" name="firstName" placeholder="First Name" required>
                 <input type="text" name="lastName" placeholder="Last Name" required>
@@ -41,24 +49,33 @@ include 'db.php';
             <div class="summary_ch">
                 <h2 class="h2ch">Order Summary</h2>
                 <ul>
-                    <li>
-                        <div class="item-image_ch">
-                            <img src="https://via.placeholder.com/120" alt="Product Image">
-                        </div>
-                        <div class="item-details_ch">
-                            <p>Product Name</p>
-                            <p>1 x 50.00€</p>
-                        </div>
-                        <div class="item-total_ch">50.00€</div>
-                    </li>
+                    <?php $total = 0; ?>
+                    <?php foreach ($_SESSION['cart'] as $item): ?>
+                        <li>
+                            <div class="item-image_ch">
+                                <img src="<?php echo $item['image_url']; ?>" alt="<?php echo $item['name']; ?>">
+                            </div>
+                            <div class="item-details_ch">
+                                <p><?php echo $item['name']; ?></p>
+                                <p><?php echo $item['quantity']; ?> x <?php echo number_format($item['price'], 2); ?>€</p>
+                            </div>
+                            <div class="item-total_ch">
+                                <?php 
+                                    $subtotal = $item['price'] * $item['quantity'];
+                                    echo number_format($subtotal, 2);
+                                    $total += $subtotal;
+                                ?>€
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
             <div class="summary-details_ch">
-                <p>Subtotal: 50.00€</p>
+                <p>Subtotal: <?php echo number_format($total, 2); ?>€</p>
                 <p>Shipping: Free</p>
-                <p><strong>Total: 50.00€</strong></p>
+                <p><strong>Total: <?php echo number_format($total, 2); ?>€</strong></p>
             </div>
         </div>
     </form>
 </div>
-<?php include 'footer.php';?>
+<?php include 'footer.php'; ?>

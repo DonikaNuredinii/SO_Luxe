@@ -50,3 +50,11 @@ body {
     background-color: #d6ccc3;
   }
   
+  .btn-nude {
+    background-color: #7a7467 !important; 
+    color: #fff;
+}
+
+.btn-nude:hover {
+    background-color: #5f564d !important;
+}

@@ -7,12 +7,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];  
 
     try {
-        // Marr përdoruesin vetëm bazuar në email
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
-        // Kontrolloj nëse përdoruesi ekziston dhe verifikoj fjalëkalimin
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
@@ -25,10 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
         } else {
-            echo "Invalid email or password.";
+            $_SESSION['error'] = "Invalid email or password.";
+            header("Location: loginsignup.php");
+            exit();
         }
     } catch (PDOException $e) {
-        echo "Query failed: " . $e->getMessage();
+        $_SESSION['error'] = "Query failed: " . $e->getMessage();
+        header("Location: loginsignup.php");
+        exit();
     }
 }
 ?>

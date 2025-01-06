@@ -21,7 +21,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
             <a href="dashboard.php">Dashboard</a>
             <a href="usertable.php">Users</a>
             <a href="product_table.php">Products</a>
-            <a href="#">Orders</a>
+            <a href="orders_table.php">Orders</a>
             <a href="../logout.php">Logout</a>
         </div>
             <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>

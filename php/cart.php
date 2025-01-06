@@ -2,55 +2,47 @@
 include 'header.php';
 include 'db.php';
 
+// Inicializimi i sesionit cart nese nuk ekziston
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])){
+// kontrollo nese produkti ekziston ne shporte
+function isProductInCart($productId) {
+    foreach ($_SESSION['cart'] as $item) {
+        if ($item['product_id'] == $productId) {
+            return true;  // Produkti ekziston
+        }
+    }
+    return false;  
+}
+
+// Shto produktin në shporte vetëm nese nuk ekziston
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
     $product_id = $_POST['product_id'];
-    
 
     $stmt = $pdo->prepare("SELECT * FROM products WHERE product_id = ?");
     $stmt->execute([$product_id]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
     if ($product) {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = [];
-        }
-
-        // Kontrollo nese produkti eshte ne shport
-        $found = false;
-        foreach ($_SESSION['cart'] as &$item) {
-            if ($item['product_id'] == $product['product_id']) {
-                $item['quantity'] += 1;
-                $found = true;
-                break;
-            }
-        }
-
-        // Shto produktin nese nuk ekziston me pare
-        if (!$found) {
+        if (!isProductInCart($product['product_id'])) {
             $product['quantity'] = 1;
             $_SESSION['cart'][] = $product;
+
+            // Ruaj te dhënat per modal
+            $_SESSION['cart_modal'] = true;
+            $_SESSION['cart_image'] = $product['image_url'];
+            $_SESSION['cart_title'] = $product['name'];
+            $_SESSION['cart_price'] = $product['price'];
         }
-
-        // Ruaj te dhenat per modal
-        $_SESSION['cart_modal'] = true;
-        $_SESSION['cart_image'] = $product['image_url'];
-        $_SESSION['cart_title'] = $product['name'];
-        $_SESSION['cart_price'] = $product['price'];
-
-        // Ridrejtimi prapa
-        header("Location: ".$_SERVER['HTTP_REFERER']);
-        exit();
     }
-}
 
-// Inicializimi i sasise ne shport
-foreach ($_SESSION['cart'] as &$item) {
-    if (!isset($item['quantity'])) {
-        $item['quantity'] = 1;
-    }
+    header("Location: " . $_SERVER['HTTP_REFERER']);
+    exit();
 }
 ?>
+
 <div class="cart-container">
     <div class="top-Cart">
         <h1>Your cart</h1>
@@ -63,7 +55,7 @@ foreach ($_SESSION['cart'] as &$item) {
         <p>Total Price</p>
     </div>
 
-    <!-- Shfaq produktet ne shporte -->
+    <!-- Shfaq produktet në shporte -->
     <?php if (!empty($_SESSION['cart'])): ?>
         <?php foreach ($_SESSION['cart'] as $item): ?>
             <div class="cart-item">
@@ -88,7 +80,6 @@ foreach ($_SESSION['cart'] as &$item) {
                             </form>
                         </div>
 
-                        
                         <form method="POST" action="update_cart.php" class="delete-form">
                             <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
                             <button type="submit" name="delete" class="delete-icon" title="Remove item">
@@ -107,24 +98,27 @@ foreach ($_SESSION['cart'] as &$item) {
         <p>Your cart is empty.</p>
     <?php endif; ?>
 
-    <!-- shporta -->
+    <!-- Shporta -->
     <div class="cart-summary">
         <p>Estimated total: 
             <?php 
-                $total = array_sum(array_map(function ($item) {
-                    return $item['price'] * $item['quantity'];
-                }, $_SESSION['cart']));
+                $total = 0;
+                if (!empty($_SESSION['cart'])) {
+                    $total = array_sum(array_map(function ($item) {
+                        return $item['price'] * $item['quantity'];
+                    }, $_SESSION['cart']));
+                }
                 echo number_format($total, 2); 
             ?> €
         </p>
         <p>Tax included. <a href="#">Shipping</a> and discounts calculated at checkout.</p>
-        <button class="checkout-button" onclick="checkout()">
-            <?php echo isset($_SESSION['user']) ? "Checkout" : "Please log in to checkout"; ?>
+        <button class="checkout-button" onclick="window.location.href='checkout.php';">
+            <?php echo isset($_SESSION['user']) ? "Please log in to checkout" : "Checkout"; ?>
         </button>
     </div>
 </div>
 
-<!-- Modal  -->
+<!-- Modal për shporte -->
 <?php if (isset($_SESSION['cart_modal']) && $_SESSION['cart_modal'] == true): ?>
     <div class="modal-cart">
         <div class="modal-content">
