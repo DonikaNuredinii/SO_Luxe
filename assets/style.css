@@ -1447,6 +1447,125 @@ h1 {
 .product-card:hover {
   opacity: 1;
 }
+@media (max-width: 1024px) {
+  .container_p {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filters {
+    width: 90%;
+    position: static;
+    padding: 30px;
+  }
+
+  .products {
+    width: 90%;
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+}
+
+/* Për Tablet (Portrait Mode) */
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 30px;
+  }
+
+  .filters {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .product-card {
+    height: auto;
+    padding: 20px;
+  }
+
+  .product-card img {
+    width: 150px;
+    height: 230px;
+  }
+
+  .product-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .product-card p {
+    font-size: 1rem;
+  }
+
+  .product-card button {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Për Ekrane Mobile (Celularë) */
+@media (max-width: 480px) {
+  .products {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .filters {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .product-card {
+    padding: 15px;
+  }
+
+  .product-card img {
+    width: 130px;
+    height: 200px;
+  }
+
+  .product-card h2 {
+    font-size: 1rem;
+  }
+
+  .product-card p {
+    font-size: 0.9rem;
+  }
+
+  .product-card button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Për ekranet shumë të vogla (320px e më poshtë) */
+@media (max-width: 320px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .product-card img {
+    width: 110px;
+    height: 180px;
+  }
+
+  .product-card h2 {
+    font-size: 0.9rem;
+  }
+
+  .product-card p {
+    font-size: 0.85rem;
+  }
+
+  .product-card button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
 
 /*productdetails page*/
 .container_pd {
@@ -1821,6 +1940,220 @@ h1 {
 #q {
   margin-left: 140px;
 }
+/* Për ekranet e mëdha (Desktop) */
+@media (min-width: 1025px) {
+  .cart-container {
+    width: 80%;
+    max-width: 1200px;
+    padding: 50px;
+    margin: 60px auto;
+  }
+
+  .top-Cart h1 {
+    font-size: 2.5rem;
+  }
+
+  .continue-shoppingg {
+    font-size: 1.1rem;
+    padding: 10px 25px;
+  }
+
+  .cart-item img {
+    width: 120px;
+  }
+
+  .total-price,
+  .item-details p {
+    font-size: 1.2rem;
+  }
+
+  .quantity-controls span {
+    font-size: 1.2rem;
+  }
+
+  .checkout-button {
+    font-size: 1.3rem;
+    padding: 18px 35px;
+  }
+}
+
+/* Për Tablet dhe Laptop (Ekrane të mesme) */
+@media (max-width: 1024px) {
+  .cart-container {
+    width: 90%;
+    padding: 35px;
+    margin: 40px auto;
+  }
+
+  .top-Cart h1 {
+    font-size: 2.2rem;
+  }
+
+  .continue-shoppingg {
+    font-size: 1rem;
+    padding: 8px 20px;
+  }
+
+  .cart-item img {
+    width: 120px;
+  }
+
+  .total-price,
+  .item-details p {
+    font-size: 1.1rem;
+  }
+
+  .quantity-controls span {
+    font-size: 1.1rem;
+  }
+
+  .checkout-button {
+    font-size: 1.1rem;
+    padding: 15px 30px;
+  }
+}
+
+/* Për Tablet (Portrait Mode) */
+@media (max-width: 768px) {
+  .cart-container {
+    width: 95%;
+    padding: 25px;
+  }
+
+  .top-Cart {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .top-Cart h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .continue-shoppingg {
+    font-size: 0.95rem;
+    padding: 7px 18px;
+    margin-bottom: 20px;
+  }
+
+  .cart-items-name {
+    display: none;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px 0;
+  }
+
+  .cart-item img {
+    width: 90px;
+    margin-bottom: 15px;
+  }
+
+  .items-cart-screen {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .item-details {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .quantity-wrapper {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .total-price {
+    font-size: 1.1rem;
+    margin-top: 10px;
+  }
+
+  .checkout-button {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    display: block;
+  }
+}
+
+/* Për Ekrane Mobile (Celularë) */
+@media (max-width: 480px) {
+  .cart-container {
+    width: 100%;
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .top-Cart h1 {
+    font-size: 1.8rem;
+  }
+
+  .continue-shoppingg {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
+
+  .cart-item img {
+    width: 80px;
+  }
+
+  .item-details p,
+  .total-price,
+  .quantity-controls span {
+    font-size: 1rem;
+  }
+
+  .quantity-controls button {
+    width: 35px;
+    padding: 5px 12px;
+  }
+
+  .checkout-button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
+  .delete-icon {
+    font-size: 1.3rem;
+  }
+}
+
+/* Për ekranet shumë të vogla (320px e më poshtë) */
+@media (max-width: 320px) {
+  .cart-container {
+    padding: 15px;
+  }
+
+  .top-Cart h1 {
+    font-size: 1.5rem;
+  }
+
+  .continue-shoppingg {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+  }
+
+  .cart-item img {
+    width: 65px;
+  }
+
+  .quantity-controls button {
+    width: 30px;
+    padding: 4px 8px;
+  }
+
+  .checkout-button {
+    font-size: 0.95rem;
+    padding: 10px 16px;
+  }
+}
 
 /*checkout page*/
 .checkout-container_ch {
@@ -1967,3 +2300,88 @@ h1 {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
+@media (max-width: 480px) {
+  .checkout-container_ch {
+    padding: 15px;
+  }
+
+  .checkout-form_ch {
+    flex-direction: column;
+  }
+
+  .left-section_ch, .right-section_ch {
+    width: 100%;
+    margin: 0;
+    padding: 15px;
+  }
+  .left-section_ch{
+    margin-bottom: 30px;
+  
+  }
+
+  .h2ch {
+    font-size: 1.4em;
+  }
+
+  .checkout-container_ch input,
+  .checkout-container_ch select {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .payment-method_ch i {
+    font-size: 1.3rem;
+  }
+
+  
+  .payment-method_ch label {
+    font-size: 0.9rem;
+  }
+
+  .complete-order_ch {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .item-image_ch img {
+    width: 80px;
+  }
+
+  .summary-details_ch p {
+    font-size: 1rem;
+  }
+
+  .summary-details_ch strong {
+    font-size: 1.1rem;
+  }
+}
+
+/* Për ekranet shumë të vogla (320px e më poshtë) */
+@media (max-width: 320px) {
+  .checkout-container_ch {
+    padding: 10px;
+  }
+
+  .h2ch {
+    font-size: 1.2em;
+  }
+
+  .checkout-container_ch input,
+  .checkout-container_ch select {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+
+  .complete-order_ch {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .item-image_ch img {
+    width: 70px;
+  }
+
+  .summary-details_ch p {
+    font-size: 0.9rem;
+  }
+}

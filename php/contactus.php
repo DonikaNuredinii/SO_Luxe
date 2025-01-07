@@ -34,22 +34,22 @@
       </div>
       <div class="leftPartCu">
         <h1>Contact Us</h1>
-        <form>
+        <form method="POST" action="contact_process.php">
           <p class="pcon">
-            Feel free to contact us and we will get back to you as soon as we
-            can!
+            Feel free to contact us and we will get back to you as soon as we can!
           </p>
           <div class="inputs-contact">
-            <input type="text" placeholder="Your Name.." aria-label="Name" />
+            <input type="text" name="name" placeholder="Your Name.." aria-label="Name" required />
           </div>
           <div class="inputs-contact">
-            <input type="text" placeholder="E-mail" aria-label="Email" />
+            <input type="text" name="email" placeholder="E-mail" aria-label="Email" required />
           </div>
           <div class="inputs-contact-Message">
-            <textarea placeholder="Tell us all about it" aria-label="Message"></textarea>
+            <textarea name="message" placeholder="Tell us all about it" aria-label="Message" required></textarea>
           </div>
           <button type="submit" class="button-CU">Send</button>
         </form>
+
       </div>
     </div>
     <div class="mapCu">
