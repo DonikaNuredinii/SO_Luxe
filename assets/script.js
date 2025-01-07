@@ -8,52 +8,64 @@ menuToggle.addEventListener("click", () => {
 /*slider*/
 let sliderIndex = 0;
 
-function showSlide(index) {
+document.addEventListener("DOMContentLoaded", () => {
   const slider = document.getElementById("slider");
   const slides = document.querySelectorAll(".slide");
   const totalSlides = slides.length;
 
-  if (index >= totalSlides) {
-    sliderIndex = 0;
-  } else if (index < 0) {
-    sliderIndex = totalSlides - 1;
-  } else {
-    sliderIndex = index;
+  if (!slider || slides.length === 0) {
+    console.warn("Slider or slides not found");
+    return;
   }
-  slider.style.transform = `translateX(-${sliderIndex * 100}%)`;
-}
 
-function prevSlide() {
-  showSlide(sliderIndex - 1);
-}
+  function showSlide(index) {
+    if (index >= totalSlides) {
+      sliderIndex = 0;
+    } else if (index < 0) {
+      sliderIndex = totalSlides - 1;
+    } else {
+      sliderIndex = index;
+    }
+    slider.style.transform = `translateX(-${sliderIndex * 100}%)`;
+  }
 
-function nextSlide() {
-  showSlide(sliderIndex + 1);
-}
+  function prevSlide() {
+    showSlide(sliderIndex - 1);
+  }
 
-setInterval(() => {
-  nextSlide();
-}, 2000);
+  function nextSlide() {
+    showSlide(sliderIndex + 1);
+  }
+
+  setInterval(() => {
+    nextSlide();
+  }, 3000);
+
+  document.querySelector(".prev").addEventListener("click", prevSlide);
+  document.querySelector(".next").addEventListener("click", nextSlide);
+});
 
 
 //loginsignup
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('loginForm');
-    const signupForm = document.getElementById('signupForm');
-    const showSignup = document.getElementById('showSignup');
-    const showLogin = document.getElementById('showLogin');
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+  const showSignup = document.getElementById('showSignup');
+  const showLogin = document.getElementById('showLogin');
 
-    showSignup.addEventListener('click', (e) => {
-        e.preventDefault();
-        loginForm.classList.add('hidden');
-        signupForm.classList.remove('hidden');
-    });
+  if (showSignup && showLogin) {
+      showSignup.addEventListener('click', (e) => {
+          e.preventDefault();
+          loginForm.classList.add('hidden');
+          signupForm.classList.remove('hidden');
+      });
 
-    showLogin.addEventListener('click', (e) => {
-        e.preventDefault();
-        signupForm.classList.add('hidden');
-        loginForm.classList.remove('hidden');
-    });
+      showLogin.addEventListener('click', (e) => {
+          e.preventDefault();
+          signupForm.classList.add('hidden');
+          loginForm.classList.remove('hidden');
+      });
+  } 
 });
 
 //funksioni per checkbox

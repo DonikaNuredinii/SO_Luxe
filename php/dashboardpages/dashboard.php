@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     <div class="d-flex">
         <div class="sidebar p-3">
             <h3>Admin Dashboard</h3>
-            <a href="dashboard.php">Dashboard</a>
+            <a href="../home.php">Home</a>
             <a href="usertable.php">Users</a>
             <a href="product_table.php">Products</a>
             <a href="orders_table.php">Orders</a>

@@ -55,19 +55,25 @@
       <h1>Shop by Category</h1>
       <div class="categories">
         <div class="category-card">
-          <img src="../images/m3.jpg" alt="Exclusive" />
+        <a href="product.php">
+    <img src="../images/m3.jpg" alt="Exclusive" />
+</a>
           <div class="category-info">
             <h2>BRANDS</h2>
           </div>
         </div>
         <div class="category-card">
+          <a href="product.php">
           <img src="../images/m1.jpg" alt="Men" />
+          </a>
           <div class="category-info">
             <h2>MEN</h2>
           </div>
         </div>
         <div class="category-card">
-          <img src="../images/m2.jpg" alt="Women" />
+          <a href="product.php">
+           <img src="../images/m2.jpg" alt="Women" />
+          </a>
           <div class="category-info">
             <h2>WOMEN</h2>
           </div>
