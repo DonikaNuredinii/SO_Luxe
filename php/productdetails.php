@@ -24,6 +24,33 @@ if (isset($_GET['id'])) {
     echo "<p>Asnjë produkt i zgjedhur.</p>";
     exit();
 }
+
+if (isset($_POST['add_to_cart'])) {
+    $productId = $_POST['product_id'];
+    $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : 1;
+
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE product_id = ?");
+    $stmt->execute([$productId]);
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($product) {
+        $_SESSION['cart'][] = [
+            'product_id' => $product['product_id'],
+            'name' => $product['name'],
+            'price' => $product['price'],
+            'quantity' => $quantity,
+            'image_url' => $product['image_url'],
+        ];
+
+        $_SESSION['cart_modal'] = true;
+        $_SESSION['cart_image'] = $product['image_url'];
+        $_SESSION['cart_title'] = $product['name'];
+        $_SESSION['cart_price'] = $product['price'] * $quantity;
+    }
+
+    header("Location: product.php?id=" . $productId); 
+    exit();
+}
 ?>
 <div class="container_pd">
     <div class="product-section_pd">
@@ -48,8 +75,17 @@ if (isset($_GET['id'])) {
                 <option>5</option>
             </select>
 
-            <button class="btn_pd cart-btn">Shto në shportë</button>
-            <button class="btn_pd buy-btn">Blej tani</button>
+            <form method="POST" action="">
+                <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" name="add_to_cart" class="btn_pd cart-btn">Shto në shportë</button>
+            </form>
+
+            <form method="POST" action="checkout.php">
+                <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" name="buy_now" class="btn_pd buy-btn">Blej tani</button>
+            </form>
         </div>
     </div>
 
@@ -77,4 +113,21 @@ if (isset($_GET['id'])) {
         </ul>
     </div>
 </div>
+<?php if (isset($_SESSION['cart_modal']) && $_SESSION['cart_modal'] == true): ?>
+    <div class="modal-cart">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Item added to cart</p>
+            <img src="<?php echo $_SESSION['cart_image']; ?>" alt="<?php echo $_SESSION['cart_title']; ?>" class="design-preview-modal">
+            <p>Amount: <?php echo number_format($_SESSION['cart_price'], 2); ?>€</p>
+            <div class="view-cart-container">
+                <a href="cart.php" class="view-cart-button">View Cart</a>
+            </div>
+            <div class="view-cart-container">
+                <a href="product.php" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+    <?php unset($_SESSION['cart_modal']); ?>
+<?php endif; ?>
 <?php include 'footer.php'; ?>

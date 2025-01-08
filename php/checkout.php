@@ -2,7 +2,29 @@
 include 'header.php';
 include 'db.php';
 
+if (isset($_POST['buy_now'])) {
+    $productId = $_POST['product_id'];
+    $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : 1;
 
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE product_id = ?");
+    $stmt->execute([$productId]);
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($product) {
+        $_SESSION['cart'] = [
+            [
+                'product_id' => $product['product_id'],
+                'name' => $product['name'],
+                'price' => $product['price'],
+                'quantity' => $quantity,
+                'image_url' => $product['image_url'],
+            ]
+        ];
+    }
+
+    header("Location: checkout.php"); 
+    exit();
+}
 if (empty($_SESSION['cart'])) {
     header("Location: cart.php");
     exit();
