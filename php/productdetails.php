@@ -29,26 +29,38 @@ if (isset($_POST['add_to_cart'])) {
     $productId = $_POST['product_id'];
     $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : 1;
 
-    $stmt = $pdo->prepare("SELECT * FROM products WHERE product_id = ?");
-    $stmt->execute([$productId]);
-    $product = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($product) {
-        $_SESSION['cart'][] = [
-            'product_id' => $product['product_id'],
-            'name' => $product['name'],
-            'price' => $product['price'],
-            'quantity' => $quantity,
-            'image_url' => $product['image_url'],
-        ];
-
-        $_SESSION['cart_modal'] = true;
-        $_SESSION['cart_image'] = $product['image_url'];
-        $_SESSION['cart_title'] = $product['name'];
-        $_SESSION['cart_price'] = $product['price'] * $quantity;
+    $productExistsInCart = false;
+    foreach ($_SESSION['cart'] as $item) {
+        if ($item['product_id'] == $productId) {
+            $productExistsInCart = true;
+            break;
+        }
     }
 
-    header("Location: product.php?id=" . $productId); 
+    if (!$productExistsInCart) {
+        $stmt = $pdo->prepare("SELECT * FROM products WHERE product_id = ?");
+        $stmt->execute([$productId]);
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($product) {
+            $_SESSION['cart'][] = [
+                'product_id' => $product['product_id'],
+                'name' => $product['name'],
+                'price' => $product['price'],
+                'quantity' => $quantity,
+                'image_url' => $product['image_url'],
+            ];
+
+            $_SESSION['cart_modal'] = true;
+            $_SESSION['cart_image'] = $product['image_url'];
+            $_SESSION['cart_title'] = $product['name'];
+            $_SESSION['cart_price'] = $product['price'] * $quantity;
+        }
+    } else {
+        $_SESSION['cart_modal'] = false;
+    }
+
+    header("Location: product.php?id=" . $productId);
     exit();
 }
 ?>
@@ -113,6 +125,7 @@ if (isset($_POST['add_to_cart'])) {
         </ul>
     </div>
 </div>
+
 <?php if (isset($_SESSION['cart_modal']) && $_SESSION['cart_modal'] == true): ?>
     <div class="modal-cart">
         <div class="modal-content">
@@ -130,4 +143,7 @@ if (isset($_POST['add_to_cart'])) {
     </div>
     <?php unset($_SESSION['cart_modal']); ?>
 <?php endif; ?>
+
 <?php include 'footer.php'; ?>
+
+

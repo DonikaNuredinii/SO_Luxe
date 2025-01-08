@@ -106,4 +106,4 @@ function checkout() {
   alert("Redirecting to checkout...");
   window.location.href = 'checkout.php';
 }
-    
+  
