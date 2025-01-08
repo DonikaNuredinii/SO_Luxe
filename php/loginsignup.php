@@ -19,7 +19,7 @@ if (isset($_SESSION['error'])) {
 <div class="container-auth">
     <div class="form-box form-box-login" id="loginForm">
         <h1>Login</h1>
-        <form action="login.php" method="POST">
+        <form action="login.php" method="POST" id="loginFormSubmit" onsubmit="return validateLoginForm()">
             <div class="input-group">
                 <label for="email-login">Email</label>
                 <input type="email" id="email-login" name="email" required>
@@ -35,7 +35,7 @@ if (isset($_SESSION['error'])) {
 
     <div class="form-box form-box-signup hidden" id="signupForm">
         <h1>Sign Up</h1>
-        <form action="signup.php" method="POST">
+        <form action="signup.php" method="POST" id="signupFormSubmit" onsubmit="return validateSignUpForm()">
             <div class="input-group">
                 <label for="name-signup">Full Name</label>
                 <input type="text" id="name-signup" name="name" required>
@@ -68,3 +68,4 @@ if (isset($_SESSION['error'])) {
     </div>
 </div>
 <?php include 'footer.php'; ?>
+

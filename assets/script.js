@@ -68,28 +68,91 @@ document.addEventListener('DOMContentLoaded', () => {
   } 
 });
 
+// Validimi i formularit Login
+function validateLoginForm() {
+  var email = document.getElementById('email-login').value;
+  var password = document.getElementById('password-login').value;
+
+  if (email === '' || password === '') {
+      alert('All fields must be filled out');
+      return false;
+  }
+
+  var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailPattern.test(email)) {
+      alert('Please enter a valid email');
+      return false;
+  }
+
+  return true;
+}
+
+// Validimi i formularit Sign Up
+function validateSignUpForm() {
+  var name = document.getElementById('name-signup').value;
+  var phone = document.getElementById('phone').value;
+  var email = document.getElementById('email-signup').value;
+  var password = document.getElementById('password-signup').value;
+  var confirmPassword = document.getElementById('confirm-password').value;
+  var terms = document.getElementById('terms').checked;
+
+  if (name === '' || phone === '' || email === '' || password === '' || confirmPassword === '') {
+      alert('All fields must be filled out');
+      return false;
+  }
+
+  var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailPattern.test(email)) {
+      alert('Please enter a valid email');
+      return false;
+  }
+
+  var phonePattern = /^\+?[1-9]\d{1,14}$/;
+  if (!phonePattern.test(phone)) {
+      alert('Please enter a valid phone number');
+      return false;
+  }
+
+  if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return false;
+  }
+
+  var passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+={}\[\]:;"'<>,.?/-]{6,20}$/;
+  if (!passwordPattern.test(password)) {
+      alert('Password should be at least 6 characters long and contain both letters and numbers');
+      return false;
+  }
+
+  if (!terms) {
+      alert('You must agree to the Terms and Conditions');
+      return false;
+  }
+
+  return true; 
+}
+
+
 //funksioni per checkbox
 function autoSubmit() {
   document.getElementById('filterForm').submit();
 }
 
-  //productdetails
-  function openTab(evt, tabName) {
-    var i, tabContent, tabLinks;
-    tabContent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabContent.length; i++) {
-      tabContent[i].style.display = "none";
-    }
-    tabLinks = document.getElementsByClassName("tab");
+//productdetails
+function openTab(evt, tabName) {
+  var i, tabContent, tabLinks;
+  tabContent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabContent.length; i++) {
+    tabContent[i].style.display = "none";
+  }
+  tabLinks = document.getElementsByClassName("tab");
     for (i = 0; i < tabLinks.length; i++) {
       tabLinks[i].classList.remove("active");
     }
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.classList.add("active");
   }
-
-
-
+  
 function closeModal() {
     const modal = document.querySelector('.modal-cart');
     modal.style.display = 'none';
