@@ -2382,3 +2382,123 @@ h1 {
     font-size: 0.9rem;
   }
 }
+
+/*account settings*/
+
+.container-accountsettings {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: whitesmoke;
+}
+
+.sidebar-acc {
+  width: 20%;
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar-acc a {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  color: #1d6a96;
+  text-decoration: none;
+}
+
+.sidebar-acc a:hover {
+  background-color: #1d6a96;
+  color: white;
+}
+
+button#button-link.navbar-link1 {
+  border: none;
+  background-color: transparent;
+  padding: 0px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+button#button-link.navbar-link1:hover {
+  color: #1d6a96;
+}
+
+button#button-link.navbar-link1 svg {
+  font-size: 24px;
+}
+
+button.linkaccbutton {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  color: #1d6a96;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+
+.linkaccbutton:hover {
+  background-color: #1d6a96;
+  color: white;
+}
+
+.form-containerA {
+  width: 560px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  box-shadow: 0 8px 47px rgba(0, 0, 0, 0.1), 0 4px 32px rgba(0, 0, 0, 0.1); /* More pronounced shadow effect */
+}
+
+.inputs-logIn-acc {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.inputs-logIn-acc input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #888888;
+  color: #303539;
+  outline: none;
+  padding: 30px 45px 30px 30px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+.acc-button1 {
+  width: 200px;
+  height: 45px;
+  background-color: #1d6a96;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  color: #f4f4f4;
+  cursor: pointer;
+}
+
+.acc-button1:hover {
+  color: #1d6a96;
+  background-color: #f4f4f4;
+  transition: 0.5s;
+}
+.truncated-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 14px;
+}

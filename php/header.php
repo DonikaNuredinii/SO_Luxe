@@ -17,9 +17,9 @@ session_start();
       <div class="filter-search">
         <form method="GET" action="product.php">
             <input type="text" name="search" placeholder="Search for perfumes..." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>"/>
-            <button type="submit"></i></button>
+            <button type="submit"></button>
         </form>
-    </div>
+      </div>
 
       <i class="fas fa-bars menu-toggle"></i>
       <ul class="navbar-links">
@@ -31,29 +31,30 @@ session_start();
         <?php if (isset($_SESSION['user_id'])): ?>
           <?php if ($_SESSION['role'] == 'admin'): ?>
             <li><a href="dashboardpages/dashboard.php">Dashboard</a></li>
-            <li>
-              <a href="logout.php">
-                <i class="fas fa-sign-out-alt"></i> 
-              </a>
-            </li>
           <?php else: ?>
             <div class="icons">
-              <a href="cart.php">
+              <!-- Ikona për Account Settings -->
+              <a href="account_settings.php" title="Account Settings">
+                <i class="fas fa-user-cog"></i>
+              </a>
+              <!-- Ikona për Shportën -->
+              <a href="cart.php" title="Cart">
                 <i class="fas fa-shopping-cart"></i>
               </a>
             </div>
-            <li>
-              <a href="logout.php">
-                <i class="fas fa-sign-out-alt"></i> 
-              </a>
-            </li>
           <?php endif; ?>
+          <!-- Ikona për Logout -->
+          <li>
+            <a href="logout.php" title="Logout">
+              <i class="fas fa-sign-out-alt"></i> 
+            </a>
+          </li>
         <?php else: ?>
           <div class="icons">
-            <a href="cart.php">
+            <a href="cart.php" title="Cart">
               <i class="fas fa-shopping-cart"></i>
             </a>
-            <a href="loginsignup.php">
+            <a href="loginsignup.php" title="Login/Signup">
               <i class="fas fa-user"></i>
             </a>
           </div>

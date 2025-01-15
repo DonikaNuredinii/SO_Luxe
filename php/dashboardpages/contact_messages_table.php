@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_message'])) {
-    $messageId = (int) $_POST['message_id']; // Sigurohemi që është një numër i plotë
+    $messageId = (int) $_POST['message_id']; 
 
     try {
         $stmt = $pdo->prepare("DELETE FROM contact_messages WHERE id = ?");

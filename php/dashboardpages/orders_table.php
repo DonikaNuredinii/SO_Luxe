@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
 
 // Terheq te gjitha porosite
 try {
-    $stmt = $pdo->query("SELECT * FROM orders ORDER BY order_date DESC");
+    $stmt = $pdo->query("SELECT * FROM orders ORDER BY order_date ASC");
     $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     die("Error: " . $e->getMessage());
