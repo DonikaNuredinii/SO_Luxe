@@ -5,8 +5,6 @@ require __DIR__ . '/../db.php';
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     exit("Unauthorized access");
 }
-
-
 if (!isset($_GET['order_id'])) {
     exit("Order ID missing");
 }

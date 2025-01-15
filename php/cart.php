@@ -2,22 +2,20 @@
 include 'header.php';
 include 'db.php';
 
-// Inicializimi i sesionit cart nese nuk ekziston
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-// kontrollo nese produkti ekziston ne shporte
 function isProductInCart($productId) {
     foreach ($_SESSION['cart'] as $item) {
         if ($item['product_id'] == $productId) {
-            return true;  // Produkti ekziston
+            return true;  
         }
     }
     return false;  
 }
 
-// Shto produktin në shporte vetëm nese nuk ekziston
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
     $product_id = $_POST['product_id'];
 
@@ -30,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
             $product['quantity'] = 1;
             $_SESSION['cart'][] = $product;
 
-            // Ruaj te dhënat per modal
             $_SESSION['cart_modal'] = true;
             $_SESSION['cart_image'] = $product['image_url'];
             $_SESSION['cart_title'] = $product['name'];
@@ -42,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
     exit();
 }
 ?>
-
 <div class="cart-container">
     <div class="top-Cart">
         <h1>Your cart</h1>
@@ -55,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
         <p>Total Price</p>
     </div>
 
-    <!-- Shfaq produktet në shporte -->
     <?php if (!empty($_SESSION['cart'])): ?>
         <?php foreach ($_SESSION['cart'] as $item): ?>
             <div class="cart-item">
@@ -98,7 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
         <p>Your cart is empty.</p>
     <?php endif; ?>
 
-    <!-- Shporta -->
     <div class="cart-summary">
         <p>Estimated total: 
             <?php 
@@ -118,7 +112,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
     </div>
 </div>
 
-<!-- Modal për shporte -->
 <?php if (isset($_SESSION['cart_modal']) && $_SESSION['cart_modal'] == true): ?>
     <div class="modal-cart">
         <div class="modal-content">
@@ -137,5 +130,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
     </div>
     <?php unset($_SESSION['cart_modal']); ?>
 <?php endif; ?>
-
 <?php include 'footer.php'; ?>

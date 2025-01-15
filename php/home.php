@@ -56,8 +56,8 @@
       <div class="categories">
         <div class="category-card">
         <a href="product.php">
-    <img src="../images/m3.jpg" alt="Exclusive" />
-</a>
+          <img src="../images/m3.jpg" alt="Exclusive" />
+        </a>
           <div class="category-info">
             <h2>BRANDS</h2>
           </div>

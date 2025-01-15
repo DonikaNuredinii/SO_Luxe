@@ -143,7 +143,4 @@ if (isset($_POST['add_to_cart'])) {
     </div>
     <?php unset($_SESSION['cart_modal']); ?>
 <?php endif; ?>
-
 <?php include 'footer.php'; ?>
-
-

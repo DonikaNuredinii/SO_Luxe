@@ -148,7 +148,6 @@ if (isset($_GET['delete_id'])) {
     <div class="container mt-5">
         <h1 class="text-center">Product Management</h1>
         <a href="dashboard.php" class="btn btn-secondary mb-3">Back to Dashboard</a>
-
         <a href="product_table.php?add_product=1" class="btn btn-success mb-3">Add Product</a>
 
         <?php if (isset($_GET['add_product']) || isset($_GET['edit_id'])): ?>
@@ -201,7 +200,7 @@ if (isset($_GET['delete_id'])) {
 
                         <label>Stock</label>
                         <input type="number" name="stock_number" class="form-control" value="<?php echo $productToEdit['stock_number'] ?? '0'; ?>" required>
-                        
+
                         <button type="submit" name="<?php echo isset($_GET['edit_id']) ? 'edit_product' : 'add_product'; ?>" class="btn btn-primary mt-3">Save Product</button>
                     </form>
                 </div>

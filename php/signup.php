@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php session_start();
 
 require __DIR__ . '/db.php';
 
@@ -6,8 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); 
-    $role = 'user';  
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $role = 'user';
 
     try {
         $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($emailExists) {
             $_SESSION['error'] = "Sorry, this email already exists.";
-            header("Location: loginsignup.php"); 
+            header("Location: loginsignup.php");
             exit();
         }
 
@@ -29,4 +29,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $e->getMessage();
     }
 }
-?>

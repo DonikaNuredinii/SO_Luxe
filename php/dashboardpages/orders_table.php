@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     exit();
 }
 
-// Terheq te gjitha porosite
 try {
     $stmt = $pdo->query("SELECT * FROM orders ORDER BY order_date ASC");
     $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -15,7 +14,6 @@ try {
     die("Error: " . $e->getMessage());
 }
 
-// Fshirja e porosise
 if (isset($_GET['delete_id'])) {
     $orderId = $_GET['delete_id'];
     try {
@@ -43,7 +41,6 @@ if (isset($_GET['delete_id'])) {
         <h1 class="text-center">Order Management</h1>
         <a href="dashboard.php" class="btn btn-secondary mb-3">Back to Dashboard</a>
 
-        <!-- Mesazhet per sukses/gabim -->
         <?php if (isset($_SESSION['message'])): ?>
             <div class="alert alert-success"> <?php echo $_SESSION['message']; unset($_SESSION['message']); ?> </div>
         <?php endif; ?>
@@ -52,7 +49,6 @@ if (isset($_GET['delete_id'])) {
             <div class="alert alert-danger"> <?php echo $_SESSION['error']; unset($_SESSION['error']); ?> </div>
         <?php endif; ?>
 
-        <!-- Tabela e Porosive -->
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -82,7 +78,6 @@ if (isset($_GET['delete_id'])) {
         </table>
     </div>
 
-    <!-- Modali -->
     <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">

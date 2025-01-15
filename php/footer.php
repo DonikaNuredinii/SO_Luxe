@@ -20,7 +20,7 @@
         <div class="footer-section contact">
           <h3>Contact Us</h3>
           <p>Email: info@S&OLuxe.com</p>
-          <p>Phone: +123 456 7890</p>
+          <p>Phone: +383 45 456 789</p>
           <p>Address: 111,Ferizaj, Kosovë</p>
         </div>
       </div>

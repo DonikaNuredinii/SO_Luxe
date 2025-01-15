@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $total += $item['price'] * $item['quantity'];
     }
 
-    // Ruajtja e porosise ne tabelën orders
     $stmt = $pdo->prepare("
         INSERT INTO orders (user_email, first_name, last_name, address, city, zip_code, phone, total, payment_method)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -26,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute([$email, $firstName, $lastName, $address, $city, $zipCode, $phone, $total, $paymentMethod]);
     $orderId = $pdo->lastInsertId();
 
-    // Shto artikujt e shportës ne order_items
     foreach ($cart as $item) {
         $stmt = $pdo->prepare("
             INSERT INTO order_items (order_id, product_id, product_name, quantity, price, subtotal)
@@ -34,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ");
         $stmt->execute([
             $orderId,
-            $item['product_id'], 
+            $item['product_id'],
             $item['name'],
             $item['quantity'],
             $item['price'],
@@ -42,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]);
     }
 
-    // Pastrimi i shportes pas blerjes
     unset($_SESSION['cart']);
 
     echo "<script>
@@ -51,4 +48,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           </script>";
     exit();
 }
-?>

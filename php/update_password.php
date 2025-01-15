@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newPassword = trim($_POST['newPassword']);
     $confirmPassword = trim($_POST['confirmPassword']);
 
-    // Validimet
     if (strlen($newPassword) < 6) {
         $_SESSION['error'] = "New password must be at least 6 characters long.";
         header("Location: update_password_settings.php");
@@ -61,4 +60,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 }
-?>

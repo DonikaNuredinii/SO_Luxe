@@ -25,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_message'])) {
         $_SESSION['error'] = "Failed to delete message: " . $e->getMessage();
     }
 }
-
 try {
     $stmt = $pdo->query("SELECT * FROM contact_messages ORDER BY created_at ASC");
     $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);

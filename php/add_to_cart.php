@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
             $product['quantity'] = 1;
             $_SESSION['cart'][] = $product;
         }
-
         header("Location: cart.php");
         exit();
     }

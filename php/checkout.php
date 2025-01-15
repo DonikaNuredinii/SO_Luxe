@@ -63,7 +63,6 @@ if (empty($_SESSION['cart'])) {
                     </label>
                 </div>
             </div>
-
             <button type="submit" class="complete-order_ch">Complete Order</button>
         </div>
 

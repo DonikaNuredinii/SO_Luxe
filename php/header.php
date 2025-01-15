@@ -33,17 +33,14 @@ session_start();
             <li><a href="dashboardpages/dashboard.php">Dashboard</a></li>
           <?php else: ?>
             <div class="icons">
-              <!-- Ikona për Account Settings -->
               <a href="account_settings.php" title="Account Settings">
                 <i class="fas fa-user-cog"></i>
               </a>
-              <!-- Ikona për Shportën -->
               <a href="cart.php" title="Cart">
                 <i class="fas fa-shopping-cart"></i>
               </a>
             </div>
           <?php endif; ?>
-          <!-- Ikona për Logout -->
           <li>
             <a href="logout.php" title="Logout">
               <i class="fas fa-sign-out-alt"></i> 

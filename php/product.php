@@ -4,9 +4,7 @@ include 'db.php';
 
 $selectedBrands = isset($_GET['brand']) ? $_GET['brand'] : [];
 $selectedGenders = isset($_GET['gender']) ? $_GET['gender'] : [];
-$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';  
-
-
+$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
 $query = "SELECT * FROM products WHERE 1=1";
 $params = [];
@@ -58,7 +56,7 @@ try {
                 <h3>Gjinia</h3>
                 <?php foreach ($genders as $gender): ?>
                     <label>
-                        <input type="checkbox" name="gender[]" value="<?php echo $gender['gender']; ?>" 
+                        <input type="checkbox" name="gender[]" value="<?php echo $gender['gender']; ?>"
                             <?php echo in_array($gender['gender'], $selectedGenders) ? 'checked' : ''; ?>
                             onchange="autoSubmit()">
                         <?php echo ucfirst($gender['gender']); ?>
@@ -70,7 +68,7 @@ try {
                 <h3>Brendi</h3>
                 <?php foreach ($brands as $brand): ?>
                     <label>
-                        <input type="checkbox" name="brand[]" value="<?php echo $brand['brand_id']; ?>" 
+                        <input type="checkbox" name="brand[]" value="<?php echo $brand['brand_id']; ?>"
                             <?php echo in_array($brand['brand_id'], $selectedBrands) ? 'checked' : ''; ?>
                             onchange="autoSubmit()">
                         <?php echo $brand['brand_name']; ?>
@@ -100,22 +98,21 @@ try {
         <?php endif; ?>
     </div>
     <?php if (isset($_SESSION['cart_modal']) && $_SESSION['cart_modal'] == true): ?>
-    <div class="modal-cart">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <p>Item added to cart</p>
-            <img src="<?php echo $_SESSION['cart_image']; ?>" alt="<?php echo $_SESSION['cart_title']; ?>" class="design-preview-modal">
-            <p>Amount: <?php echo number_format($_SESSION['cart_price'], 2); ?>€</p>
-            <div class="view-cart-container">
-                <a href="cart.php" class="view-cart-button">View Cart</a>
-            </div>
-            <div class="view-cart-container">
-                <a href="product.php" class="continue-shopping">Continue Shopping</a>
+        <div class="modal-cart">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p>Item added to cart</p>
+                <img src="<?php echo $_SESSION['cart_image']; ?>" alt="<?php echo $_SESSION['cart_title']; ?>" class="design-preview-modal">
+                <p>Amount: <?php echo number_format($_SESSION['cart_price'], 2); ?>€</p>
+                <div class="view-cart-container">
+                    <a href="cart.php" class="view-cart-button">View Cart</a>
+                </div>
+                <div class="view-cart-container">
+                    <a href="product.php" class="continue-shopping">Continue Shopping</a>
+                </div>
             </div>
         </div>
-    </div>
-    <?php unset($_SESSION['cart_modal']); ?>
-<?php endif; ?>
-
+        <?php unset($_SESSION['cart_modal']); ?>
+    <?php endif; ?>
 </div>
 <?php include 'footer.php'; ?>

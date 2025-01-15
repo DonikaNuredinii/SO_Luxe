@@ -1,43 +1,49 @@
 <?php
-// Lidhja me bazën e të dhënave
-$conn = new mysqli('localhost', 'root', '', 'emri_i_bazes_se_te_dhenave');
+session_start();
+require 'db.php';
 
-// Kontrollo lidhjen
-if ($conn->connect_error) {
-    die("Lidhja dështoi: " . $conn->connect_error);
+if (!isset($_SESSION['user_id'])) {
+    die("Duhet të jeni i loguar për të aksesuar këtë faqe.");
 }
 
 $formErrors = [];
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $firstName = $conn->real_escape_string($_POST['firstName']);
-    $lastName = $conn->real_escape_string($_POST['lastName']);
-    $phoneNumber = $conn->real_escape_string($_POST['phoneNumber']);
-    $email = $conn->real_escape_string($_POST['email']);
+$userId = $_SESSION['user_id'];
 
-    // Kontrollo validimet
-    if (empty($firstName)) $formErrors['firstName'] = "First name is required";
-    if (empty($lastName)) $formErrors['lastName'] = "Last name is required";
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $formErrors['email'] = "Invalid email format";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $firstName = trim($_POST['firstName'] ?? '');
+    $lastName = trim($_POST['lastName'] ?? '');
+    $phoneNumber = trim($_POST['phoneNumber'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+
+    if (empty($firstName)) {
+        $formErrors['firstName'] = "First name is required.";
+    }
+    if (empty($lastName)) {
+        $formErrors['lastName'] = "Last name is required.";
+    }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $formErrors['email'] = "Invalid email format.";
+    }
+    if (!preg_match('/^\+?\d{7,15}$/', $phoneNumber)) {
+        $formErrors['phoneNumber'] = "Valid phone number is required.";
+    }
 
     if (empty($formErrors)) {
-        // Përditëso të dhënat në bazën e të dhënave
-        $userId = 1; // Përdor ID-në e përdoruesit të kyçur nga sesioni
-        $sql = "UPDATE users 
-                SET name = '$firstName $lastName', phone = '$phoneNumber', email = '$email' 
-                WHERE id = $userId";
+        try {
+            $sql = "UPDATE users 
+                    SET name = :name, phone = :phone, email = :email 
+                    WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                ':name' => "$firstName $lastName",
+                ':phone' => $phoneNumber,
+                ':email' => $email,
+                ':id' => $userId
+            ]);
 
-        if ($conn->query($sql) === TRUE) {
             echo "<script>alert('Të dhënat u përditësuan me sukses!');</script>";
-        } else {
-            echo "<script>alert('Gabim gjatë përditësimit: " . $conn->error . "');</script>";
-        }
-    } else {
-        foreach ($formErrors as $error) {
-            echo "<script>alert('$error');</script>";
+        } catch (PDOException $e) {
+            echo "<script>alert('Gabim gjatë përditësimit: " . $e->getMessage() . "');</script>";
         }
     }
 }
-
-// Mbyll lidhjen
-$conn->close();
-?>

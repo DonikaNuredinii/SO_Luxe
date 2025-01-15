@@ -1465,7 +1465,6 @@ h1 {
   }
 }
 
-/* Për Tablet (Portrait Mode) */
 @media (max-width: 768px) {
   .products {
     grid-template-columns: repeat(2, minmax(200px, 1fr));
@@ -1501,7 +1500,6 @@ h1 {
   }
 }
 
-/* Për Ekrane Mobile (Celularë) */
 @media (max-width: 480px) {
   .products {
     grid-template-columns: 1fr;
@@ -1536,7 +1534,6 @@ h1 {
   }
 }
 
-/* Për ekranet shumë të vogla (320px e më poshtë) */
 @media (max-width: 320px) {
   .products {
     grid-template-columns: 1fr;
@@ -1939,7 +1936,7 @@ h1 {
 #q {
   margin-left: 140px;
 }
-/* Për ekranet e mëdha (Desktop) */
+
 @media (min-width: 1025px) {
   .cart-container {
     width: 80%;
@@ -1976,7 +1973,6 @@ h1 {
   }
 }
 
-/* Për Tablet dhe Laptop (Ekrane të mesme) */
 @media (max-width: 1024px) {
   .cart-container {
     width: 90%;
@@ -2012,7 +2008,6 @@ h1 {
   }
 }
 
-/* Për Tablet (Portrait Mode) */
 @media (max-width: 768px) {
   .cart-container {
     width: 95%;
@@ -2082,7 +2077,6 @@ h1 {
   }
 }
 
-/* Për Ekrane Mobile (Celularë) */
 @media (max-width: 480px) {
   .cart-container {
     width: 100%;
@@ -2124,7 +2118,6 @@ h1 {
   }
 }
 
-/* Për ekranet shumë të vogla (320px e më poshtë) */
 @media (max-width: 320px) {
   .cart-container {
     padding: 15px;
@@ -2353,7 +2346,6 @@ h1 {
   }
 }
 
-/* Për ekranet shumë të vogla (320px e më poshtë) */
 @media (max-width: 320px) {
   .checkout-container_ch {
     padding: 10px;
@@ -2384,7 +2376,6 @@ h1 {
 }
 
 /*account settings*/
-
 .container-accountsettings {
   margin-top: 100px;
   margin-bottom: 100px;
@@ -2408,12 +2399,12 @@ h1 {
   display: block;
   padding: 10px;
   margin: 10px 0;
-  color: #1d6a96;
+  color: #b8a88c;
   text-decoration: none;
 }
 
 .sidebar-acc a:hover {
-  background-color: #1d6a96;
+  background-color: #b8a88c;
   color: white;
 }
 
@@ -2426,7 +2417,7 @@ button#button-link.navbar-link1 {
 }
 
 button#button-link.navbar-link1:hover {
-  color: #1d6a96;
+  color: #b8a88c;
 }
 
 button#button-link.navbar-link1 svg {
@@ -2437,14 +2428,14 @@ button.linkaccbutton {
   display: block;
   padding: 10px;
   margin: 10px 0;
-  color: #1d6a96;
+  color: #b8a88c;
   text-decoration: none;
   background-color: transparent;
   border: none;
 }
 
 .linkaccbutton:hover {
-  background-color: #1d6a96;
+  background-color: #e3d6b5;
   color: white;
 }
 
@@ -2452,8 +2443,7 @@ button.linkaccbutton {
   width: 560px;
   padding: 20px;
   box-sizing: border-box;
-
-  box-shadow: 0 8px 47px rgba(0, 0, 0, 0.1), 0 4px 32px rgba(0, 0, 0, 0.1); /* More pronounced shadow effect */
+  box-shadow: 0 8px 47px rgba(0, 0, 0, 0.1), 0 4px 32px rgba(0, 0, 0, 0.1); 
 }
 
 .inputs-logIn-acc {
@@ -2480,7 +2470,7 @@ button.linkaccbutton {
 .acc-button1 {
   width: 200px;
   height: 45px;
-  background-color: #1d6a96;
+  background-color: #b8a88c;
   border: none;
   outline: none;
   border-radius: 20px;
@@ -2489,7 +2479,7 @@ button.linkaccbutton {
 }
 
 .acc-button1:hover {
-  color: #1d6a96;
+  color: #e3d6b5;
   background-color: #f4f4f4;
   transition: 0.5s;
 }
@@ -2502,3 +2492,5 @@ button.linkaccbutton {
   cursor: pointer;
   font-size: 14px;
 }
+
+

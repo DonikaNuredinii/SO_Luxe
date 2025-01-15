@@ -112,7 +112,6 @@ if (isset($_GET['delete_id'])) {
             </div>
         <?php endif; ?>
 
-        <!-- Tabela e userave -->
         <table class="table table-bordered mt-3">
             <thead>
                 <tr>
@@ -140,8 +139,6 @@ if (isset($_GET['delete_id'])) {
                             onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                         </td>
                     </tr>
-
-                    <!-- Forma per editim  -->
                     <?php if (isset($_GET['edit_id']) && $_GET['edit_id'] == $user['id']): ?>
                         <tr>
                             <td colspan="7">

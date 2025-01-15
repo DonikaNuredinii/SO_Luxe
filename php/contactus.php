@@ -49,7 +49,6 @@
           </div>
           <button type="submit" class="button-CU">Send</button>
         </form>
-
       </div>
     </div>
     <div class="mapCu">

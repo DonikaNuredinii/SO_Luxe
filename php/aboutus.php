@@ -24,13 +24,10 @@
                     enchanting aromas.
                     From delicate florals to deep, sensual musks, every bottle unveils a narrative of elegance and
                     allure.</p>
-
             </div>
-
         </div>
 
         <div class="section-about">
-
             <div class="site-container">
                 <h2>Crafted to Perfection</h2>
                 <p>Each fragrance is meticulously blended by our expert perfumers, driven by passion and artistry.
@@ -38,26 +35,21 @@
                     that redefine elegance.</p>
 
             </div>
-
             <img src="../images/f15.jpg" alt="fotoja2">
         </div>
 
         <div class="container">
-
             <img class="fotoja-container" style="width: 50% !important;" src="../images/f4.jpg" alt="foto313">
-
             <div class="text">
                 <h1>Our Philosophy</h1>
                 <p id="paragrafet-AU">At S&O LuxePerfume, we curate an exceptional selection of world-renowned
                     fragrances from iconic brands such as Gucci, Armani, and more.
                     Our passion lies in delivering timeless scents crafted by the finest perfumers, ensuring each bottle
                     embodies sophistication and elegance.</p>
-
                 <p id="paragrafet-AU">We transcend traditional fragrance boundaries, exploring bold combinations of rare
                     ingredients and distinctive notes.
                     Our collection reflects the artistry of perfumery, offering signature scents that define
                     individuality and style.</p>
-
                 <p id="paragrafet-AU">Whether you're seeking an iconic classic or the latest designer release, S&O
                     LuxePerfume brings you the best from the world's most celebrated brands – elevating your senses and
                     leaving a lasting impression.</p>

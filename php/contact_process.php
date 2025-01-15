@@ -14,7 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
-    } else {
+    } 
+    else {
         echo "<script>alert('Please fill in all fields.'); window.history.back();</script>";
     }
 }
